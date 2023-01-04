@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
 import { selectTopics } from "../features/topics/topicsSlice";
 import { addQuizThunk } from "../features/quizzes/quizzesSlice";
+import { addCards } from "../features/cards/cardsSlice";
 
 export default function NewQuizForm() {
   const [name, setName] = useState("");
@@ -23,7 +24,14 @@ export default function NewQuizForm() {
 
     const cardIds = [];
 
-    // create the new cards here and add each card's id to cardIds
+    // Iterating through each card in the quiz form's local state when the event handler fires
+    cards.forEach((card) => {
+      // Generating a unique ID for each card
+      let cardId = uuidv4();
+      cardIds.push(cardId);
+      // Dispatching the addCards action creator, storing the IDs in the 'cardIds' array (line 25)
+      dispatch(addCards({ ...card, id: cardId }));
+    });
 
     // Dispatching 'addQuizThunk' from the event handler that runs when a new quiz form is submitted
     let quizId = uuidv4();

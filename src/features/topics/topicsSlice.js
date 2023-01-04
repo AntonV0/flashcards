@@ -8,7 +8,7 @@ export const topicsSlice = createSlice({
     // This object will hold all topics keyed by 'id'
     topics: {}
   },
-  // Reducer for addTopic action
+  // Reducers for addTopic and addQuizId actions
   reducers: {
     addTopic: (state, action) => {
       // Example payload for addTopic action is:
@@ -22,6 +22,13 @@ export const topicsSlice = createSlice({
         // Value of 'quizIds' property is stored in an empty array (as new topics won't have any associated quizzes)
         quizIds: []
       };
+    },
+    addQuizId: (state, action) => {
+      // Example payload for addQuizId action is:
+      // {quizId: '123', topicId: '456'}
+      const { quizId, topicId } = action.payload;
+      // Adding a quiz's 'id' to the 'quizId' array of the topic the new quiz is associated with
+      state.topics[topicId].quizIds.push(quizId);
     }
   }
 });
@@ -30,7 +37,7 @@ export const topicsSlice = createSlice({
 export const selectTopics = (state) => state.topics.topics;
 
 // Exporting actions
-export const { addTopic } = topicsSlice.actions;
+export const { addTopic, addQuizId } = topicsSlice.actions;
 
 // Default exporting the reducer
 export default topicsSlice.reducer;

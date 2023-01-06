@@ -6,7 +6,7 @@ Flashcards is a React application that allows users to design any quiz they like
 
 This project uses Redux and the Redux Toolkit to manage complex state. The main objective was to create three separate slices of state - one for the quiz topics, one for the quiz itself, and one for the question/answer cards within the quiz. These slices were then connected to other files in the app, which includes all components (NewQuizForm, NewTopicForm, Card, Quiz, Quizzes, Topic, and Topics), as well as the Redux store.
 ## What I Learned
-  - How to create complex slices of state with minimal guidance
+  - How to create and connect complex slices of state
   - Intermediate Redux logic with configureStore, createSlice, setting initialState, adding reducers for actions, asynchronous thunks, dispatching actions
   - Importing and exporting selectors, actions, and reducers
   - Dispatching actions and thunks within event handlers
